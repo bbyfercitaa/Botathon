@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<process name="Ingesta_BaseContratos" version="1.0" bpversion="7.5.1.18099" cpeversion="10.0.136.0" narrative="Lee la hoja Dotacion_2026 del reporte de contratos y la guarda en XLSX." byrefcollection="true" processrunningmessage="" disableversioning="false" preferredid="6886f2d6-3e15-4efb-8844-5e2a096a6419">
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="b0ee4e75-0586-42b4-8079-386e443aaf4f" name="Start" type="Start">
+    <display x="15" y="-255" />
+    <onsuccess>75d737f2-abf4-4a79-aea5-26d715740e34</onsuccess>
+  </stage>
+  <stage stageid="75d737f2-abf4-4a79-aea5-26d715740e34" name="Create Instance" type="Action">
+    <display x="15" y="-180" />
+    <inputs>
+      <input type="flag" name="Enable Events" expr="True" />
+    </inputs>
+    <outputs>
+      <output type="number" name="handle" stage="vHandle" />
+    </outputs>
+    <onsuccess>0ef8213f-338a-4fa6-807a-4de4b248b969</onsuccess>
+    <resource object="MS Excel VBO" action="Create Instance" />
+  </stage>
+  <stage stageid="0ef8213f-338a-4fa6-807a-4de4b248b969" name="Open Workbook" type="Action">
+    <display x="15" y="-105" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+      <input type="text" name="File name" expr="[vRuta]" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" stage="vWorkbook" />
+    </outputs>
+    <onsuccess>778dc7b0-5797-4b89-ae82-42b5eff053c7</onsuccess>
+    <resource object="MS Excel VBO" action="Open Workbook" />
+  </stage>
+  <stage stageid="778dc7b0-5797-4b89-ae82-42b5eff053c7" name="Activar Dotacion_2026" type="Action">
+    <display x="15" y="150" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+      <input type="text" name="Workbook Name" expr="[vWorkbook]" />
+      <input type="text" name="Worksheet Name" expr="[vHoja]" />
+      <input type="flag" name="Create If Missing?" expr="False" />
+    </inputs>
+    <onsuccess>5e0f7bce-291b-4d9b-aa58-caa3c2182df1</onsuccess>
+    <resource object="MS Excel VBO" action="Activate Worksheet" />
+  </stage>
+  <stage stageid="5e0f7bce-291b-4d9b-aa58-caa3c2182df1" name="Leer Dotacion_2026" type="Action">
+    <display x="15" y="225" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+      <input type="text" name="Workbook Name" expr="[vWorkbook]" />
+      <input type="text" name="Worksheet Name" expr="[vHoja]" />
+      <input type="text" name="StartCell" expr="[vIni]" />
+      <input type="text" name="EndCell" expr="[vFin]" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Data" stage="cDatos" />
+    </outputs>
+    <onsuccess>85ed5404-5296-4511-a94d-3265d3f2c9d8</onsuccess>
+    <resource object="MS Excel VBO" action="Get Worksheet Range As Collection" />
+  </stage>
+  <stage stageid="85ed5404-5296-4511-a94d-3265d3f2c9d8" name="Crear salida Dotacion_2026" type="Action">
+    <display x="15" y="300" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" stage="vOutWb" />
+    </outputs>
+    <onsuccess>83f627a9-741d-43a6-8fe2-8c3448fe9eaa</onsuccess>
+    <resource object="MS Excel VBO" action="Create Workbook" />
+  </stage>
+  <stage stageid="83f627a9-741d-43a6-8fe2-8c3448fe9eaa" name="Volcar Dotacion_2026" type="Action">
+    <display x="15" y="375" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+      <input type="collection" name="Collection" expr="[cDatos]" />
+      <input type="text" name="Workbook Name" expr="[vOutWb]" />
+      <input type="text" name="Worksheet Name" expr="&quot;&quot;" />
+      <input type="text" name="Cell Reference" expr="&quot;A1&quot;" />
+      <input type="flag" name="Include Column Names" expr="True" />
+    </inputs>
+    <onsuccess>1a3194aa-4584-4424-844b-54f142395eeb</onsuccess>
+    <resource object="MS Excel VBO" action="Write Collection" />
+  </stage>
+  <stage stageid="1a3194aa-4584-4424-844b-54f142395eeb" name="Guardar Dotacion_2026" type="Action">
+    <display x="15" y="450" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+      <input type="text" name="Workbook Name" expr="[vOutWb]" />
+      <input type="text" name="Filename" expr="[vSalida]" />
+    </inputs>
+    <outputs>
+      <output type="text" name="New Workbook Name" stage="vOutWbFinal" />
+    </outputs>
+    <onsuccess>992a5146-695e-4918-b497-a08950b126ba</onsuccess>
+    <resource object="MS Excel VBO" action="Save Workbook As" />
+  </stage>
+  <stage stageid="992a5146-695e-4918-b497-a08950b126ba" name="Cerrar salida Dotacion_2026" type="Action">
+    <display x="15" y="525" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+      <input type="text" name="Workbook Name" expr="[vOutWbFinal]" />
+      <input type="flag" name="Save Data" expr="False" />
+    </inputs>
+    <onsuccess>985c950b-0976-4cb5-a253-2465504604dd</onsuccess>
+    <resource object="MS Excel VBO" action="Close Workbook" />
+  </stage>
+  <stage stageid="985c950b-0976-4cb5-a253-2465504604dd" name="Close Workbook" type="Action">
+    <display x="15" y="0" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+      <input type="text" name="Workbook Name" expr="[vWorkbook]" />
+      <input type="flag" name="Save Data" expr="False" />
+    </inputs>
+    <onsuccess>51866c27-11df-4997-a8ad-2eb948d3f315</onsuccess>
+    <resource object="MS Excel VBO" action="Close Workbook" />
+  </stage>
+  <stage stageid="51866c27-11df-4997-a8ad-2eb948d3f315" name="Release Instance" type="Action">
+    <display x="15" y="75" />
+    <inputs>
+      <input type="number" name="handle" expr="[vHandle]" />
+    </inputs>
+    <onsuccess>43a0ad54-ca60-49eb-9b3d-1293935500e9</onsuccess>
+    <resource object="MS Excel VBO" action="Release Instance" />
+  </stage>
+  <stage stageid="43a0ad54-ca60-49eb-9b3d-1293935500e9" name="End" type="End">
+    <display x="15" y="150" />
+  </stage>
+  <stage stageid="f958b603-08ce-4143-a310-5a2976784309" name="vRuta" type="Data">
+    <display x="320" y="-255" />
+    <datatype>text</datatype>
+    <initialvalue>C:\Users\Miau\Desktop\Botathon\Recursos\Nac - Base contratos x mes.xlsx</initialvalue>
+  </stage>
+  <stage stageid="9fe62f1f-0284-4b80-a402-49120b04f0d0" name="vHoja" type="Data">
+    <display x="320" y="-215" />
+    <datatype>text</datatype>
+    <initialvalue>Dotacion_2026</initialvalue>
+  </stage>
+  <stage stageid="989737a1-f286-4a67-b10b-4a936aad111f" name="vIni" type="Data">
+    <display x="320" y="-175" />
+    <datatype>text</datatype>
+    <initialvalue>A2</initialvalue>
+  </stage>
+  <stage stageid="26d3f9d4-6ab8-40e5-881e-88057f41c6aa" name="vFin" type="Data">
+    <display x="320" y="-135" />
+    <datatype>text</datatype>
+    <initialvalue>S3125</initialvalue>
+  </stage>
+  <stage stageid="1418c8cb-8679-48a8-8e7d-39dd7a6a8752" name="vSalida" type="Data">
+    <display x="320" y="-95" />
+    <datatype>text</datatype>
+    <initialvalue>C:\Users\Miau\Desktop\Botathon\Frontend\data\base_contratos.xlsx</initialvalue>
+  </stage>
+  <stage stageid="c4f2719a-feed-45e7-b2fb-99f653e5eb1a" name="vHandle" type="Data">
+    <display x="320" y="-55" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+  </stage>
+  <stage stageid="06d055c2-b78a-4fc3-ba34-518934399f25" name="vWorkbook" type="Data">
+    <display x="320" y="-15" />
+    <datatype>text</datatype>
+    <initialvalue></initialvalue>
+  </stage>
+  <stage stageid="b0382db7-fb5e-47fc-89c3-11c9a34fbc42" name="vOutWb" type="Data">
+    <display x="320" y="25" />
+    <datatype>text</datatype>
+    <initialvalue></initialvalue>
+  </stage>
+  <stage stageid="a88b3597-ab35-4434-9d48-493e62886668" name="vOutWbFinal" type="Data">
+    <display x="320" y="65" />
+    <datatype>text</datatype>
+    <initialvalue></initialvalue>
+  </stage>
+  <stage stageid="01f154c6-e0b6-4a9d-8827-ac7291e0c1f0" name="cDatos" type="Collection">
+    <display x="320" y="105" />
+    <datatype>collection</datatype>
+  </stage>
+</process>
