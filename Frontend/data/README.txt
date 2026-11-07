@@ -1,0 +1,1 @@
+python -c "import pandas as pd; df = pd.read_csv('data/profesionales.csv'); print(df); print(df.shape)" ---> Para ver las tablas en terminal

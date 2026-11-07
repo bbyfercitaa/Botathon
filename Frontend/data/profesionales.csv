@@ -1,0 +1,7 @@
+profesional_id,instituto,cargo,area,tipo_contrato,fecha_inicio,fecha_termino,estado,titular_id
+PROF-0001,Valparaíso,Kinesiólogo,Rehabilitación,indefinido,2024-03-01,,activo,
+PROF-0002,Santiago,Terapeuta Ocupacional,Rehabilitación,indefinido,2023-01-15,,activo,
+PROF-0003,Concepción,Fonoaudiólogo,Rehabilitación,plazo fijo,2026-01-01,2026-12-31,activo,
+PROF-0004,Arica,Educador de Arte,Educación,indefinido,2022-05-01,,activo,
+PROF-0005,Ñuble,Kinesiólogo,Rehabilitación,indefinido,2026-05-01,,vacante,
+PROF-0006,Temuco,Kinesiólogo,Rehabilitación,reemplazo,2026-04-01,2026-06-30,activo,PROF-0099

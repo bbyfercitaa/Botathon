@@ -1,0 +1,11 @@
+cargo,tramo,pct_directo,pct_indirecto,pct_nas,minutos_directos,minutos_indirectos,aplica_grupal,pct_grupal,pacientes_por_grupo_santiago,pacientes_por_grupo_regiones
+Kinesiólogo,40+,0.70,0.20,0.10,30,30,0,0,0,0
+Kinesiólogo,22-40,0.65,0.25,0.10,30,30,0,0,0,0
+Kinesiólogo,<22,0.60,0.30,0.10,30,30,0,0,0,0
+Terapeuta Ocupacional,40+,0.70,0.20,0.10,40,30,0,0,0,0
+Terapeuta Ocupacional,22-40,0.65,0.25,0.10,40,30,0,0,0,0
+Fonoaudiólogo,40+,0.70,0.20,0.10,45,30,0,0,0,0
+Fonoaudiólogo,22-40,0.65,0.25,0.10,45,30,0,0,0,0
+Educador de Arte,40+,0.60,0.20,0.20,45,30,1,0.20,6,4
+Educador de Arte,22-40,0.60,0.20,0.20,45,30,1,0.20,6,4
+Psicólogo,40+,0.70,0.20,0.10,60,30,0,0,0,0

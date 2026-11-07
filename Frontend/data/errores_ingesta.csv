@@ -1,0 +1,6 @@
+error_id,archivo,fila,columna,valor,mensaje,severidad,fecha_deteccion
+E-0001,BUK_2026_05.xlsx,42,fecha_termino,2025-12-31,Fecha de término anterior a la fecha de inicio,error,2026-05-02
+E-0002,BUK_2026_05.xlsx,87,horas_semanales,cuarenta y dos,Valor no numérico en horas semanales,error,2026-05-02
+E-0003,BUK_2026_05.xlsx,103,instituto,Valparaiso,Instituto no reconocido; se sugiere Valparaíso,advertencia,2026-05-02
+E-0004,SIC_2026_04.xlsx,15,profesional_id,PROF-9999,Profesional no existe en la dotación,error,2026-05-03
+E-0005,BUK_2026_05.xlsx,210,cargo,Kinesiologo,Cargo sin homologación; se sugiere Kinesiólogo,advertencia,2026-05-02
