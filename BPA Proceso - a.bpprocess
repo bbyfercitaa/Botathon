@@ -1,0 +1,198 @@
+﻿<process name="a" version="1.0" bpversion="7.5.1.18099" cpeversion="10.0.136.0" narrative="" byrefcollection="true" processrunningmessage="" disableversioning="false" preferredid="0e16e3ad-7e90-41f8-bd68-86032a38e933">
+  <view>
+    <camerax>131</camerax>
+    <cameray>164</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="cfb25159-06ba-4f3b-a0ba-723c2d882985" name="Iniciar" type="Start">
+    <display x="15" y="-135" />
+    <onsuccess>3769877e-a2a7-4ded-bd46-cc7dd8118eec</onsuccess>
+  </stage>
+  <stage stageid="f17486f6-e5e7-4ad4-9e32-0051603ae3a1" name="Finalizar" type="End">
+    <display x="135" y="225" />
+  </stage>
+  <stage stageid="1daade14-2055-4e50-86d5-ac7b8866361c" name="Fase1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="f9f8d8a9-0090-4731-9480-5c8903096a1c" name="handle" type="Data">
+    <display x="180" y="-180" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="f53dada2-a8fc-40fa-a499-cf601edeaf9a" name="MS Excel VBO - Extended::Open Workbook" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-45" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required workbook should be opened. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="File name" friendlyname="File name" narrative="The path and name of the file which should be opened." expr="&quot;C:\Users\pv-alumno\Downloads\Nac - Base contratos x mes.xlsx&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name used by Excel to identify the workbook - usually this is the file name (without the path)." stage="Workbook Name" />
+    </outputs>
+    <onsuccess>a6f37e65-463d-4131-a307-ea2b07073af9</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Open Workbook" />
+  </stage>
+  <stage stageid="db626c4e-cccc-4b68-bab3-82f29c4f8e0a" name="DatosSIC" type="Collection">
+    <display x="315" y="120" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="632e5e6e-5777-4127-993f-5fa0f906ea1c" name="RutaBK" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-135" y="-180" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">C:\Users\pv-alumno\Downloads\Nac - Base contratos x mes.xlsx</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="55734d66-f79c-4edb-963e-fac6194217b9" name="RutaSIC" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-60" y="-180" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">"C:\Users\pv-alumno\Downloads\SIC_Atenciones_por_mes_2026.xlsx"</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="1087231d-4edf-416b-bbc4-2c203041bd34" name="HojaBUK" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-180" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">Dotacion_2026</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="c9d3d0a1-9b86-4003-a286-542aa233b31a" name="HojaSIC" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="105" y="-180" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">Atenciones_SIC</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="8938634b-676b-4472-83bc-f7352d1b850d" name="DatosBUK" type="Collection">
+    <display x="300" y="-45" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="df55ad7f-bc22-4191-8d55-5dcf65c7853b" name="MS Excel VBO - Extended::Close Workbook" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="165" y="30" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook which should be closed resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which should be closed." expr="" />
+      <input type="flag" name="Save Data" friendlyname="Save Data" narrative="True to save the data before closing the workbook; The default of False will discard any changes before closing the workbook." expr="False" />
+    </inputs>
+    <onsuccess>24799656-c674-463f-bbcf-858ef61bb9c9</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Close Workbook" />
+  </stage>
+  <stage stageid="50c3d508-fb8c-48bc-acac-50c693029caf" name="TotalFilas" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="300" y="-135" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="3769877e-a2a7-4ded-bd46-cc7dd8118eec" name="MS Excel VBO - Extended::Create Instance" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-90" />
+    <inputs>
+      <input type="flag" name="Enable Events" friendlyname="Enable Events" narrative="Flag to indicate that events should be enabled / disabled on the attached instance - defaulted to True" expr="" />
+    </inputs>
+    <outputs>
+      <output type="number" name="handle" friendlyname="handle" narrative="An integer which can be used to identify the created instance in subsequent actions" stage="handle" />
+    </outputs>
+    <onsuccess>f53dada2-a8fc-40fa-a499-cf601edeaf9a</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Create Instance" />
+  </stage>
+  <stage stageid="e236e2bb-44ba-461d-93b1-83d67cfd74e2" name="MS Excel VBO - Extended::Get Worksheet As Collection" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="165" y="-45" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the worksheet which should be retrieved resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which contains the sheet required. The default empty text indicates the currently active workbook on the specified instance." expr="[Workbook Name]" />
+      <input type="text" name="Worksheet Name" friendlyname="Worksheet Name" narrative="The name of the worksheet within the specified workbook which should be written to a collection. The default empty text indicates the currently active worksheet within the specified workbook." expr="" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Data" friendlyname="Data" narrative="The collection containing the data from the specified worksheet - the column IDs will be gleaned from the first row on the sheet being retrieved." stage="DatosBUK" />
+    </outputs>
+    <onsuccess>df55ad7f-bc22-4191-8d55-5dcf65c7853b</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Get Worksheet As Collection" />
+  </stage>
+  <stage stageid="9f9735a7-d50c-44e1-aca6-00820e6be9d0" name="Workbook Name" type="Data">
+    <display x="240" y="-45" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="a6f37e65-463d-4131-a307-ea2b07073af9" name="MS Excel VBO - Extended::Show" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="90" y="-45" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance which should have its window displayed. The default of zero indicates the currently active instance." expr="[handle]" />
+    </inputs>
+    <onsuccess>e236e2bb-44ba-461d-93b1-83d67cfd74e2</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Show" />
+  </stage>
+  <stage stageid="24799656-c674-463f-bbcf-858ef61bb9c9" name="MS Excel VBO - Extended::Open Workbook" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="165" y="75" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required workbook should be opened. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="File name" friendlyname="File name" narrative="The path and name of the file which should be opened." expr="&quot;C:\Users\pv-alumno\Downloads\SIC_Atenciones_por_mes_2026.xlsx&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name used by Excel to identify the workbook - usually this is the file name (without the path)." stage="WorkbookName2" />
+    </outputs>
+    <onsuccess>58d9f4c8-f7cf-4472-b5f3-2ff010e53c81</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Open Workbook" />
+  </stage>
+  <stage stageid="58d9f4c8-f7cf-4472-b5f3-2ff010e53c81" name="MS Excel VBO - Extended::Show" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="240" y="75" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance which should have its window displayed. The default of zero indicates the currently active instance." expr="[handle]" />
+    </inputs>
+    <onsuccess>6f147a8b-f2fe-4aba-9483-2af93dca7465</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Show" />
+  </stage>
+  <stage stageid="6f147a8b-f2fe-4aba-9483-2af93dca7465" name="MS Excel VBO - Extended::Get Worksheet As Collection" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="240" y="120" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the worksheet which should be retrieved resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which contains the sheet required. The default empty text indicates the currently active workbook on the specified instance." expr="[WorkbookName2]" />
+      <input type="text" name="Worksheet Name" friendlyname="Worksheet Name" narrative="The name of the worksheet within the specified workbook which should be written to a collection. The default empty text indicates the currently active worksheet within the specified workbook." expr="" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Data" friendlyname="Data" narrative="The collection containing the data from the specified worksheet - the column IDs will be gleaned from the first row on the sheet being retrieved." stage="DatosSIC" />
+    </outputs>
+    <onsuccess>6da7dcbe-19c2-4749-9ce6-fd331cbc9183</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Get Worksheet As Collection" />
+  </stage>
+  <stage stageid="6da7dcbe-19c2-4749-9ce6-fd331cbc9183" name="MS Excel VBO - Extended::Close Workbook" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="240" y="165" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook which should be closed resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which should be closed." expr="" />
+      <input type="flag" name="Save Data" friendlyname="Save Data" narrative="True to save the data before closing the workbook; The default of False will discard any changes before closing the workbook." expr="False" />
+    </inputs>
+    <onsuccess>f17486f6-e5e7-4ad4-9e32-0051603ae3a1</onsuccess>
+    <resource object="MS Excel VBO - Extended" action="Close Workbook" />
+  </stage>
+  <stage stageid="28be6d95-b1cf-4627-b4e7-40be82f89988" name="WorkbookName2" type="Data">
+    <display x="165" y="120" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+</process>
